@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 iTopZ
+ * Copyright (c) 2023
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,10 +30,10 @@ import org.slf4j.LoggerFactory;
  * @Author Nightwolf
  * iToPz Discord: https://discord.gg/KkPms6B5aE
  * <p>
- * Vote System
+ * User Item Delivery System
  * Pack Support: Lucera
  * <p>
- * Personal Donate Panels: https://www.denart-designs.com/
+ * Personal Donate, Vote, Referral Panels: https://www.denart-designs.com/
  * Free Donate panel: https://itopz.com/
  */
 public class ItemDeliveryManager implements ScriptFile
