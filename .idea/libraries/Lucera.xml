@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Lucera">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/Java Servers/Lucera/source/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/Java Servers/Lucera/source/lib" recursive="false" />
+  </library>
+</component>
