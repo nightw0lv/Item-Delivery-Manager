@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/Java Servers/Lucera/build</output-path>
     <root id="archive" name="ItemDelivery.ext.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/Java Servers/Lucera/source/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/Java Servers/Projects/Lucera/source/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="UserItemDelivery" />
     </root>
