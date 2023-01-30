@@ -47,6 +47,8 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
           PRIMARY KEY (`id`) USING BTREE
         ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
         
+* !!! ONLY For Donation Panel Execute Query:
+
         -- ----------------------------
         -- Table structure for donations
         -- ----------------------------
@@ -62,6 +64,75 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
         ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
         
         SET FOREIGN_KEY_CHECKS = 1;
+        
+        
+* !!! ONLY For Vote Panel Execute Query:
+
+        SET NAMES utf8mb4;
+        SET FOREIGN_KEY_CHECKS = 0;
+        
+        DROP TABLE IF EXISTS `voterewardhopzone`;
+        CREATE TABLE `voterewardhopzone`  (
+          `id` int NOT NULL AUTO_INCREMENT,
+          `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `character_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `user_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+        
+        DROP TABLE IF EXISTS `voterewarditopz`;
+        CREATE TABLE `voterewarditopz`  (
+          `id` int NOT NULL AUTO_INCREMENT,
+          `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `character_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `user_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+        
+        DROP TABLE IF EXISTS `voterewardnetwork`;
+        CREATE TABLE `voterewardnetwork`  (
+          `id` int NOT NULL AUTO_INCREMENT,
+          `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `character_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `user_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+        
+        DROP TABLE IF EXISTS `voterewardbrasil`;
+        CREATE TABLE `voterewardbrasil`  (
+            `id` int NOT NULL AUTO_INCREMENT,
+            `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `character_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `user_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+        
+        DROP TABLE IF EXISTS `voterewardtopservers`;
+        CREATE TABLE `voterewardtopservers`  (
+            `id` int NOT NULL AUTO_INCREMENT,
+            `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `character_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `user_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+        
+        DROP TABLE IF EXISTS `voterewardhotservers`;
+        CREATE TABLE `voterewardhotservers`  (
+            `id` int NOT NULL AUTO_INCREMENT,
+            `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `character_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `user_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+        
+        SET FOREIGN_KEY_CHECKS = 1;
+
 ##### MsSQL Installation
 * Execute Query:
 
@@ -99,6 +170,8 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
         	GO
         	
         	
+* !!! ONLY For Donation Panel Execute Query:
+
         IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[donations]') AND type IN ('U'))
         	DROP TABLE [dbo].[donations]
         	GO
@@ -129,28 +202,255 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
         ALTER TABLE [dbo].[donations] SET (LOCK_ESCALATION = TABLE)
         	GO
 
+        	
+* !!! ONLY For Vote Panel Execute Query:
+
+        USE [lin2world]
+            GO
+        
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardItopz]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardItopz]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardItopz]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardItopz] SET (LOCK_ESCALATION = TABLE)
+            GO
+        
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardHopzone]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardHopzone]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardHopzone]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardHopzone] SET (LOCK_ESCALATION = TABLE)
+            GO
+            
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardBrasil]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardBrasil]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardBrasil]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardBrasil] SET (LOCK_ESCALATION = TABLE)
+            GO
+            
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardNetwork]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardNetwork]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardNetwork]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardNetwork] SET (LOCK_ESCALATION = TABLE)
+            GO
+            
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardTopservers]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardTopservers]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardTopservers]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardTopservers] SET (LOCK_ESCALATION = TABLE)
+            GO
+            
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardHotservers]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardHotservers]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardHotservers]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardHotservers] SET (LOCK_ESCALATION = TABLE)
+            GO
+            
+        IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[VoteRewardHopzone]') AND type IN ('U'))
+            DROP TABLE [dbo].[VoteRewardHopzone]
+            GO
+        SET ANSI_NULLS ON
+            GO
+        SET QUOTED_IDENTIFIER ON
+            GO
+        SET ANSI_PADDING ON
+            GO
+        
+        CREATE TABLE [dbo].[VoteRewardHopzone]
+        (
+            [id] [int] IDENTITY(1,1) NOT NULL,
+            [date_time] [datetime] NULL,
+            [user_ip] [varchar](50) NOT NULL,
+            [account_name] [nvarchar](50) NOT NULL,
+            [character_name] [nvarchar](50) NOT NULL,
+            PRIMARY KEY CLUSTERED
+            (
+                [id] ASC
+            )	WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+        )	ON [PRIMARY]
+            GO
+        
+        SET ANSI_PADDING OFF
+            GO
+        ALTER TABLE [dbo].[VoteRewardHopzone] SET (LOCK_ESCALATION = TABLE)
+            GO
+	
 ##### Database User Creation
 
 * You need to **create a new database user** and password for more security (**don't use root**)
 * Access restricted to your **web host** IP Address (ask your host provider for the IP)
 * Give this user the specific permissions (for test grant \*.* and access from %)
 
-        SELECT on characters (obj_Id and char_name)
-        INSERT on user_item_delivery
-        UPDATE on user_item_delivery
-        INSERT on donations
+* MySQL
+
+    * !!! ONLY For Donate Panel Execute Query:
+
+            SELECT on characters (obj_Id and char_name)
+            INSERT on user_item_delivery
+            UPDATE on user_item_delivery
+            INSERT on donations
         
-##### Notes
+    * !!! ONLY For Vote Panel Execute Query:
+
+            SELECT on characters (obj_Id and char_name)
+            INSERT on user_item_delivery
+            UPDATE on user_item_delivery
+            INSERT on donations
+* MsSQL Server
+
+    * You need a remote user to connect only
+    
+##### Notes for MySQL
 * Check your port **3306** is open https://canyouseeme.org
 * In case you have 2 databases (login, game) you must install the SQL into game Database, otherwise it won't work.
 * For security **do not use** the **wildcard** (%) for this user IP address, instead use your website host IP, so it will be accessed only from your web host.
+##### Notes for MsSQL
+* Check your port **1433** is open https://canyouseeme.org
+* You must install the SQL into lin2world Database, otherwise it won't work.
+* For security allow in your firewall only host IP address, so it will be accessed only from your web host.
 
 #
 
 ###Extras (This step is optional)
 ####
 
-##### Extras for SGUARD, SMARTGUARD or any client URL open method for auto login
+##### Donate Panel - Extras for SGUARD, SMARTGUARD or any client URL open method for auto login
 *  To open your donation website with this method you have to add OpenDonateWebsite.java in your project
 *  Your npc find the lines like this:
 
@@ -174,7 +474,7 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
         
         <button value="Buy Donate Coins" action="bypass -h npc_%objectId%_buydc" width=134 height=21 back="L2UI_ch3.BigButton3_over" fore="L2UI_ch3.BigButton3">
 
-#### Player will experience the following:
+#### Donate Panel - Player will experience the following:
 * Click on some npc button ie: "Buy Donate Coins" or voiced command .donate (check installation examples)
 * Player's browser automatically opens the donation url for your server
 * ~~Player required to login with character name~~ ```we bypass this step with this function```
@@ -184,7 +484,7 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
 
 
 
-#### Code:
+#### Donate Panel - Java Code:
 * if you use smart guard add this
 
         player.sendPacket(new OpenDonateWebsite("https://web.com/shop/payment/?game_login=" + player.getName()));
