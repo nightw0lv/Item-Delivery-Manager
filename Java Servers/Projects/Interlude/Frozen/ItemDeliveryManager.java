@@ -32,8 +32,8 @@ public class ItemDeliveryManager
 {
 	static final Logger LOGGER = Logger.getLogger(ItemDeliveryManager.class);
 
-	private final String UPDATE = "UPDATE user_item_delivery SET status=1 WHERE id=?;";
-	private final String SELECT = "SELECT id, item_id, item_count, char_name FROM user_item_delivery WHERE status=0;";
+	private final static String UPDATE = "UPDATE user_item_delivery SET status=1 WHERE id=?;";
+	private final static String SELECT = "SELECT id, item_id, item_count, char_name FROM user_item_delivery WHERE status=0;";
 
 	@SuppressWarnings("unused")
 	private ScheduledFuture<?> _autoCheck;

@@ -7,7 +7,7 @@ Enable item delivery
 * Execute Query:
 
         USE [lin2world]
-            GO
+        	GO
 
         IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[user_item_delivery]') AND type IN ('U'))
         	DROP TABLE [dbo].[user_item_delivery]
@@ -66,6 +66,6 @@ Enable item delivery
         	GO
         
         SET ANSI_PADDING OFF
-            GO
+        	GO
         ALTER TABLE [dbo].[donations] SET (LOCK_ESCALATION = TABLE)
         	GO

@@ -29,8 +29,8 @@ public class ItemDeliveryManager
 {
 	private static Logger _log = Logger.getLogger(ItemDeliveryManager.class.getName());
 
-	private final String UPDATE = "UPDATE user_item_delivery SET status=1 WHERE id=?;";
-	private final String SELECT = "SELECT id, item_id, item_count, char_name FROM user_item_delivery WHERE status=0;";
+	private final static String UPDATE = "UPDATE user_item_delivery SET status=1 WHERE id=?;";
+	private final static String SELECT = "SELECT id, item_id, item_count, char_name FROM user_item_delivery WHERE status=0;";
 
 	public static ItemDeliveryManager getInstance()
 	{
@@ -94,7 +94,7 @@ public class ItemDeliveryManager
 				}
 				catch (Exception e)
 				{
-					__log.warning("Check delivery items failed. " + e.getMessage());
+					_log.warning("Check delivery items failed. " + e.getMessage());
 				}
 			}
 		}, 5000L, 5000L);

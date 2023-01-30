@@ -59,14 +59,14 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
           `character_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
           `date_time` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
           PRIMARY KEY (`id`)
-        ) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+        ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
         
         SET FOREIGN_KEY_CHECKS = 1;
 ##### MsSQL Installation
 * Execute Query:
 
         USE [lin2world]
-            GO
+        	GO
 
         IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[user_item_delivery]') AND type IN ('U'))
         	DROP TABLE [dbo].[user_item_delivery]
@@ -125,7 +125,7 @@ _L2Java Delivery Manager for [DenArt Designs](https://shop.denart-designs.com/?u
         	GO
         
         SET ANSI_PADDING OFF
-            GO
+        	GO
         ALTER TABLE [dbo].[donations] SET (LOCK_ESCALATION = TABLE)
         	GO
 
