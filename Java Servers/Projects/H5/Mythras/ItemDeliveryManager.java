@@ -66,7 +66,7 @@ public class ItemDeliveryManager
 						{
 							id = rset.getInt("id");
 							item_id = rset.getInt("item_id");
-							item_count = rset.getInt("count");
+							item_count = rset.getInt("item_count");
 							char_name = rset.getString("char_name");
 							if (item_id > 0 && item_count > 0 && char_name != null)
 							{

@@ -74,7 +74,7 @@ public class ItemDeliveryManager
 							}
 							if (activeChar.getName().toLowerCase().equals(char_name.toLowerCase()))
 							{
-								activeChar.addItem("Delivery", item_id, count, activeChar, true);
+								activeChar.addItem("Delivery", item_id, item_count, activeChar, true);
 								activeChar.sendItemList();
 								activeChar.sendMessage("Delivery of " + item_count + " coins.");
 								UpdateDelivery(id);
