@@ -6,8 +6,7 @@
  * Purchased: https://shop.denart-designs.com/
  * License: https://shop.denart-designs.com/activate.php?license
  * License Activation: https://shop.denart-designs.com/activate.php ( ^ first you must purchase the license)
- *
- * Created for DenArt Designs that holds the ownership of this files
+ * Created for DenArt Designs that holds the ownership of these files,
  * Removing this constitutes violation of the agreement.
  */
 package services;
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
 
 import l2e.gameserver.ThreadPoolManager;
 import l2e.gameserver.database.DatabaseFactory;
-import l2e.gameserver.model.World;
+import l2e.gameserver.model.GameObjectsStorage;
 import l2e.gameserver.model.actor.Player;
 
 /**
@@ -31,7 +30,7 @@ import l2e.gameserver.model.actor.Player;
  */
 public class ItemDeliveryManager
 {
-	private static Logger _log = Logger.getLogger(ItemDeliveryManager.class.getName());
+	private static final Logger _log = Logger.getLogger(ItemDeliveryManager.class.getName());
 
 	private final static String UPDATE = "UPDATE user_item_delivery SET status=1 WHERE id=?;";
 	private final static String SELECT = "SELECT id, item_id, item_count, char_name FROM user_item_delivery WHERE status=0;";
@@ -70,25 +69,12 @@ public class ItemDeliveryManager
 						char_name = rset.getString("char_name");
 						if ((item_id > 0) && (item_count > 0) && (char_name != null))
 						{
-							final Player player = World.getInstance().getPlayer(char_name);
-							if (player != null)
+							final Player player = GameObjectsStorage.getPlayer(char_name);
+							if (player != null && player.isOnline())
 							{
-								for (final Player activeChar : World.getInstance().getAllPlayers())
-								{
-									if ((activeChar == null) || (activeChar.isOnline() == false))
-									{
-										continue;
-									}
-									if (activeChar.getObjectId() == player.getObjectId())
-									{
-										if (activeChar.getName(null).toLowerCase().equals(player.getName(null).toLowerCase()))
-										{
-											activeChar.addItem("Delivery", item_id, item_count, activeChar, true);
-											activeChar.sendMessage("Delivery of " + item_count + " coins.");
-											UpdateDelivery(id);
-										}
-									}
-								}
+								player.addItem("Delivery", item_id, item_count, player, true);
+								player.sendMessage("Delivery of " + item_count + " Donate Coins.");
+								UpdateDelivery(id);
 							}
 						}
 					}
@@ -101,7 +87,7 @@ public class ItemDeliveryManager
 		}, 5000L, 5000L);
 	}
 
-	private static void UpdateDelivery(int id)
+	private void UpdateDelivery(int id)
 	{
 		try (Connection con = DatabaseFactory.getInstance().getConnection();
 				PreparedStatement statement = con.prepareStatement(UPDATE))
